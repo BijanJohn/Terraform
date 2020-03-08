@@ -13,7 +13,6 @@ terraform {
   }
 }
 
-
 resource "aws_db_instance" "example" {
   instance_class = "db.t2.micro"
   identifier_prefix = "bijan-terraform-example"
