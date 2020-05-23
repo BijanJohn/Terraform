@@ -5,21 +5,21 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "bijan-terraform-state"
-    key   = "stage/data-stores/mysql/terraform.tfstate"
+    key    = "stage/data-stores/mysql/terraform.tfstate"
     region = "us-east-2"
 
-  dynamodb_table = "bijan-terraform-locks"
-  encrypt = true
+    dynamodb_table = "bijan-terraform-locks"
+    encrypt        = true
   }
 }
 
 resource "aws_db_instance" "example" {
-  instance_class = "db.t2.micro"
+  instance_class    = "db.t2.micro"
   identifier_prefix = "bijan-terraform-example"
-  engine = "mysql"
+  engine            = "mysql"
   allocated_storage = 10
-  name = "example_database"
-  username = "admin"
+  name              = "example_database"
+  username          = "admin"
 
   password = var.db_password
   # This stores the password in AWS Secrets Manager

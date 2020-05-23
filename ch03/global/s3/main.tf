@@ -1,11 +1,11 @@
 terraform {
   backend "s3" {
     bucket = "bijan-terraform-state"
-    key   = "global/s3/terraform.tfstate"
+    key    = "global/s3/terraform.tfstate"
     region = "us-east-2"
 
-  dynamodb_table = "bijan-terraform-locks"
-  encrypt = true
+    dynamodb_table = "bijan-terraform-locks"
+    encrypt        = true
   }
 }
 
@@ -37,9 +37,9 @@ resource "aws_s3_bucket" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "terraform_locks" {
-  name = "bijan-terraform-locks"
+  name         = "bijan-terraform-locks"
   billing_mode = "PAY_PER_REQUEST"
-  hash_key  = "LockID"
+  hash_key     = "LockID"
 
   attribute {
     name = "LockID"
